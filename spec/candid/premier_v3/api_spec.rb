@@ -61,18 +61,18 @@ RSpec.describe Candid::PremierV3::API do
       end
 
       it 'raises an APIError' do
-        expect { api.lookup_by_ein('12-3456789') }.to raise_error(Candid::PremierV3::API::APIError)
+        expect { api.lookup_by_ein('12-3456789') }.to raise_error(Candid::PremierV3::APIError)
       end
 
       it 'sets the message on the error' do
         api.lookup_by_ein('12-3456789')
-      rescue Candid::PremierV3::API::APIError => e
+      rescue Candid::PremierV3::APIError => e
         expect(e.message).to eq('Not Found')
       end
 
       it 'sets the response on the error' do
         api.lookup_by_ein('12-3456789')
-      rescue Candid::PremierV3::API::APIError => e
+      rescue Candid::PremierV3::APIError => e
         expect(e.response).to be_a(HTTParty::Response)
       end
     end
