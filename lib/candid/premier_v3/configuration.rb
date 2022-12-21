@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Candid
-  module Client
+  module PremierV3
     class Configuration
       attr_writer :api_token
 
