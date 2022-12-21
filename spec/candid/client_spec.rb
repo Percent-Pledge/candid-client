@@ -18,14 +18,10 @@ RSpec.describe Candid::Client do
 
     it 'returns custom property values' do
       described_class.configure do |config|
-        config.client_id = '12345'
-        config.client_secret = 'abcdef'
-        config.sandbox = true
+        config.api_token = '12345'
       end
 
-      expect(described_class.configuration.client_id).to eq('12345')
-      expect(described_class.configuration.client_secret).to eq('abcdef')
-      expect(described_class.configuration.sandbox).to be(true)
+      expect(described_class.configuration.api_token).to eq('12345')
     end
   end
 end

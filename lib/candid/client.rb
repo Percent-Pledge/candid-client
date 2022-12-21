@@ -2,10 +2,7 @@
 
 require 'candid/client/api'
 require 'candid/client/version'
-require 'candid/client/connect'
-require 'candid/client/resource'
 require 'candid/client/configuration'
-require 'candid/client/resource_collection'
 
 module Candid
   module Client
