@@ -2,6 +2,8 @@
 
 require 'bundler/setup'
 require 'candid/client'
+require 'candid/premier_v3'
+
 require 'webmock/rspec'
 require 'byebug'
 require 'simplecov'
