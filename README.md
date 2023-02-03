@@ -45,11 +45,39 @@ puts charity_details.summary.organization_name
 puts charity_details.operations.leader_name
 ```
 
-This returns a `Candid::PremierV3::Resource` object that automatically allows you to access the data using the dot notation. If you need to access the raw data, you can use the `#to_h` method. The resource's data is scoped to the `data` key in the response - you have access to the full response by using the `#response` method.
+This returns a `Candid::Shared::Resource` object that automatically allows you to access the data using the dot notation. If you need to access the raw data, you can use the `#to_h` method. The resource's data is scoped to the `data` key in the response - you have access to the full response by using the `#response` method.
 
 **Errors**
 
 If the API returns an error, a `Candid::PremierV3::APIError` will be raised. The error object will a message set by the API and a `#response` method that returns the full response object.
+
+### Essentials v3
+
+**Setup**
+
+Once this gem has been installed and you have the required credentials, you must place Candid Essentials v3 configuration early in your app's boot process (eg: a Rails initializer):
+
+```ruby
+Candid::EssentialsV3.configure do |config|
+    config.api_token = 'letmein'
+end
+```
+
+**Usage**
+
+As with the API, there is only one method exposed for use:
+
+```ruby
+Candid::EssentialsV3.search_by_term('Red Cross')
+# With optional filters
+Candid::EssentialsV3.search_by_term('Red Cross', filters: { geography: { state: ['CA', 'NY'] } })
+```
+
+This returns a list of `Candid::Shared::Resource` objects that automatically allows you to access the data using the dot notation. If you need to access the raw data, you can use the `#to_h` method. The resource's data is scoped to the `data` key in the response - you have access to the full response by using the `#response` method.
+
+**Errors**
+
+If the API returns an error, a `Candid::EssentialsV3::APIError` will be raised. The error object will a message set by the API and a `#response` method that returns the full response object.
 
 ## Development
 
