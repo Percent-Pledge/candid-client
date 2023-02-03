@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Candid::PremierV3::Resource do
+RSpec.describe Candid::Shared::Resource do
   before do
     Candid::PremierV3.configure do |config|
       config.api_token = '12345'

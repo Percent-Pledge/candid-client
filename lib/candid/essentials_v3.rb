@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'candid/shared/resource'
-require 'candid/premier_v3/api'
-require 'candid/premier_v3/configuration'
+require 'candid/essentials_v3/api'
+require 'candid/essentials_v3/configuration'
 
 module Candid
-  module PremierV3
+  module EssentialsV3
     extend self
 
     def configure
@@ -13,11 +13,11 @@ module Candid
     end
 
     def configuration
-      @configuration ||= Candid::PremierV3::Configuration.new
+      @configuration ||= Candid::EssentialsV3::Configuration.new
     end
 
-    def lookup_by_ein(ein)
-      api.lookup_by_ein(ein)
+    def search_by_term(search_terms, filters: nil)
+      api.search_by_term(search_terms, filters: filters)
     end
 
     private

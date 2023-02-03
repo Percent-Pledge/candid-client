@@ -3,7 +3,7 @@
 require 'httparty'
 
 module Candid
-  module PremierV3
+  module Shared
     class Resource
       attr_reader :data, :response
 
