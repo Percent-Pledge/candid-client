@@ -3,7 +3,7 @@
 require 'httparty'
 
 module Candid
-  module PremierV3
+  module EssentialsV3
     class APIError < StandardError
       attr_reader :response
 
@@ -18,7 +18,7 @@ module Candid
 
       default_timeout 180
 
-      base_uri 'https://api.candid.org/premier/v3'
+      base_uri 'https://api.candid.org/essentials/v3'
       format :json
 
       def initialize(api_token)
@@ -28,12 +28,17 @@ module Candid
         })
       end
 
-      def lookup_by_ein(ein)
-        response = self.class.get("/#{ein}")
+      def search_by_term(search_terms, filters: nil)
+        response = self.class.post('/', body: {
+          search_terms: search_terms,
+          filters: filters
+        }.compact.to_json)
 
-        raise Candid::PremierV3::APIError.new(response.parsed_response['message'], response) unless response.success?
+        raise Candid::EssentialsV3::APIError.new(response.parsed_response['message'], response) unless response.success?
 
-        Candid::Shared::Resource.new(response.parsed_response['data'], response)
+        response.parsed_response['hits'].map do |hit|
+          Candid::Shared::Resource.new(hit, response)
+        end
       end
     end
   end

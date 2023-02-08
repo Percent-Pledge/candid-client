@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Candid
-  module PremierV3
+  module EssentialsV3
     class Configuration
       attr_writer :api_token
 
       def api_token
-        @api_token || raise(ArgumentError, 'Candid Premier V3 api_token must be set')
+        @api_token || raise(ArgumentError, 'Candid Essentials V3 api_token must be set')
       end
     end
   end

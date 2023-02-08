@@ -10,7 +10,7 @@ RSpec.describe Candid::PremierV3::Configuration do
     end
 
     it 'raises if API token is not set' do
-      expect { described_class.new.api_token }.to raise_error(ArgumentError, 'Candid api_token must be set')
+      expect { described_class.new.api_token }.to raise_error(ArgumentError, 'Candid Premier V3 api_token must be set')
     end
   end
 end

@@ -42,7 +42,7 @@ RSpec.describe Candid::PremierV3::API do
       end
 
       it 'returns an API resource object' do
-        expect(api.lookup_by_ein('12-3456789')).to be_a(Candid::PremierV3::Resource)
+        expect(api.lookup_by_ein('12-3456789')).to be_a(Candid::Shared::Resource)
       end
 
       it 'allows data JSON to be traversed like an object' do

@@ -26,7 +26,7 @@ RSpec.describe Candid::PremierV3 do
       stub_request(:get, 'https://api.candid.org/premier/v3/12345')
         .to_return(status: 200, body: { data: { name: 'Test' } }.to_json)
 
-      expect(described_class.lookup_by_ein('12345')).to be_a(Candid::PremierV3::Resource)
+      expect(described_class.lookup_by_ein('12345')).to be_a(Candid::Shared::Resource)
     end
   end
 end
